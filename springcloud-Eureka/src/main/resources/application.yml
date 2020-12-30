@@ -1,0 +1,23 @@
+server:
+  #端口
+  port: 9000
+eureka:
+  instance:
+    #服务注册中心实例的主机名
+    hostname: localhost
+    #ip-address: 固定ip地址
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    preferIpAddress: true
+  server:
+    #关闭自我保护机制，防止失效的服务也被一直访问 （开发环境)
+    enable-self-preservation: false
+    #该配置可以修改检查失效服务的时间，每隔5s检查失效服务，默认该配置是 60s （开发环境)
+    eviction-interval-timer-in-ms: 5000
+  client:
+    #是否向服务注册中心注册自己
+    registerWithEureka: false
+    #是否检索服务
+    fetchRegistry: false
+    #服务注册中心的配置内容，指定服务注册中心的位置
+    serviceUrl:
+      defaultZone: http://localhost:9100/eureka/

@@ -1,0 +1,18 @@
+#将服务注册到注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+      #healthcheck:
+      #enabled: true  #开启自定义健康检查
+  instance:
+    #eureka服务器在接收到最后一个心跳之后等待的时间，然后才能从列表中删除此实例 默认90s（开发环境)
+    lease-expiration-duration-in-seconds: 10
+    #eureka客户端需要向eureka服务器发送心跳的频率 默认30s （开发环境)
+    lease-renewal-interval-in-seconds: 1
+server:
+  port: 9004
+#配置服务名称及端口
+spring:
+  application:
+    name: spirngcloud-ribbon-client

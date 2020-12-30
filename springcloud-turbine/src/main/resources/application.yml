@@ -1,0 +1,22 @@
+#将服务注册到注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+      #healthcheck:
+      #enabled: true  #开启自定义健康检查
+  instance:
+    #eureka服务器在接收到最后一个心跳之后等待的时间，然后才能从列表中删除此实例 默认90s（开发环境)
+    lease-expiration-duration-in-seconds: 10
+    #eureka客户端需要向eureka服务器发送心跳的频率 默认30s （开发环境)
+    lease-renewal-interval-in-seconds: 1
+server:
+  port: 9007
+spring:
+  application:
+    name: springcloud-turbine
+turbine:
+  #指定了需要收集监控信息的服务名，多个以“,”进行区分
+  appConfig: springcloud-feign
+  clusterNameExpression: new String("default")
+  combineHostPort: true
